@@ -23,7 +23,7 @@ except ImportError:
     BS4_AVAILABLE = False
 
 # Import from our modules
-from web_search_engine import SearchResult, SearchResponse
+from .web_search_engine import SearchResult, SearchResponse
 
 # Color support
 try:

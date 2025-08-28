@@ -15,10 +15,10 @@ from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, asdict
 
 # Import our web search modules
-from web_search_engine import WebSearchEngine, SearchResponse, format_search_results
-from search_providers import get_provider, get_providers_for_search_type, AVAILABLE_PROVIDERS
-from content_processor import ContentProcessor, process_web_search, format_processed_results
-from enterprise_timeout_config import EnterpriseTimeoutConfig, TimeoutManager
+from .web_search_engine import WebSearchEngine, SearchResponse, format_search_results
+from .search_providers import get_provider, get_providers_for_search_type, AVAILABLE_PROVIDERS
+from .content_processor import ContentProcessor, process_web_search, format_processed_results
+from .enterprise_timeout_config import EnterpriseTimeoutConfig, TimeoutManager
 
 # Color support
 try:

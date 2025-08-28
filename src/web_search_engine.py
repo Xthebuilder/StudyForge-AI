@@ -237,7 +237,7 @@ class WebSearchEngine:
             )
             
             headers = {
-                'User-Agent': self.config['user_agent'],
+                'User-Agent': self.config.get('user_agent', 'StudyForge-AI/1.0'),
                 'Accept': 'application/json, text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.5',
                 'Accept-Encoding': 'gzip, deflate',

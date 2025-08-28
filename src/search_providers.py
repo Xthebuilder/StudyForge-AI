@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup, Comment
 import xml.etree.ElementTree as ET
 
 # Import from our web search engine
-from web_search_engine import SearchResult
+from .web_search_engine import SearchResult
 
 # Color support
 try:
