@@ -40,7 +40,7 @@ python src/main.py  # Your original timeout-enhanced AI
 
 ### **2. Web-Enhanced StudyForge AI**
 ```bash
-python src/web_enhanced_ai.py  # AI with intelligent web search
+python agent.py  # AI with intelligent web search (MAIN ENTRY)
 ```
 
 ### **3. Speed-Optimized Version**

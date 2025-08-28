@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 ### **3. Launch StudyForge AI**
 ```bash
-python src/main.py
+python agent.py
 ```
 
 ---
