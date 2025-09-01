@@ -68,6 +68,14 @@ pip install -r requirements.txt
 ```
 
 ### **3. Launch StudyForge AI**
+
+**Web Interface (Recommended):**
+```bash
+python web_server.py
+# Then open http://localhost:8000 in your browser
+```
+
+**Command Line Interface:**
 ```bash
 python agent.py
 ```
