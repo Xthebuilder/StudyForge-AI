@@ -1,0 +1,10 @@
+{
+  "theme": "dark",
+  "auto_search": false,
+  "search_threshold": 0.7,
+  "max_search_results": 10,
+  "timeout_seconds": 120,
+  "retry_count": 3,
+  "model_name": "gpt-oss:20b",
+  "ollama_url": "http://localhost:11434/api/generate"
+}

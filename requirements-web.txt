@@ -1,0 +1,33 @@
+# StudyForge AI - Web Interface Requirements
+# Core web framework
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+
+# Template engine
+jinja2>=3.1.2
+
+# HTTP client (already used in CLI)
+aiohttp>=3.9.0
+
+# QR code generation for mobile access
+qrcode[pil]>=7.4.2
+
+# Terminal colors (already used in CLI)
+colorama>=0.4.6
+
+# WebSocket support (included with uvicorn[standard])
+websockets>=12.0
+
+# Database (using SQLite - built into Python)
+# No additional requirements needed
+
+# RAG (Retrieval Augmented Generation) dependencies
+PyPDF2>=3.0.1
+python-docx>=0.8.11
+beautifulsoup4>=4.12.2
+lxml>=4.9.3
+markdown>=3.5.1
+python-multipart>=0.0.6
+
+# Optional: Development tools
+# uvicorn[standard] already includes watchfiles for auto-reload

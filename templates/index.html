@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="StudyForge AI - Your intelligent study companion with web search capabilities. Chat with AI, get research assistance, and enhance your learning.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="StudyForge AI">
+    
+    <!-- Title -->
+    <title>StudyForge AI - Your Intelligent Study Companion</title>
+    
+    <!-- Progressive Web App Meta -->
+    <meta name="application-name" content="StudyForge AI">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="StudyForge AI">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#007aff">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="StudyForge AI - Your Intelligent Study Companion">
+    <meta property="og:description" content="Chat with AI, get research assistance, and enhance your learning with web search capabilities.">
+    <meta property="og:site_name" content="StudyForge AI">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="StudyForge AI">
+    <meta name="twitter:description" content="Your intelligent study companion with web search capabilities.">
+    
+    <!-- Security & Performance -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self' ws: wss:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="/static" crossorigin>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- Icons -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiMwMDdhZmYiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSI0IiB5PSI0Ij4KPHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTAtNC40NzctMTAtMTAtMTB6bTAgMThjLTQuNDEgMC04LTMuNTktOC04czMuNTktOCA4LTggOCAzLjU5IDggOC0zLjU5IDgtOCA4eiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cjwvc3ZnPg==" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyIDMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE2IiBmaWxsPSIjMDA3YWZmIi8+PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSI0IiB5PSI0Ij48cGF0aCBkPSJNMTIgMkM2LjQ3NyAyIDIgNi40NzcgMiAxMnM0LjQ3NyAxMCAxMCAxMCAxMC00LjQ3NyAxMC0xMC00LjQ3Ny0xMC0xMC0xMHptMCAxOGMtNC40MSAwLTgtMy41OS04LThzMy41OS04IDgtOCA4IDMuNTkgOCA4LTMuNTkgOC04IDh6IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPjwvc3ZnPg==" sizes="180x180">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "StudyForge AI",
+        "description": "Intelligent study companion with web search capabilities",
+        "url": "http://{{ local_ip }}:{{ port }}",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any"
+    }
+    </script>
+</head>
+<body>
+    <!-- Screen reader skip link -->
+    <a href="#main-content" class="sr-only skip-link">Skip to main content</a>
+    
+    <!-- Loading spinner for initial load -->
+    <div id="loadingSpinner" class="loading-spinner" aria-hidden="true">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p>Loading StudyForge AI...</p>
+        </div>
+    </div>
+    
+    <!-- Connection status indicator -->
+    <div id="connectionStatus" class="connection-status" role="status" aria-live="polite" aria-hidden="true">
+        <span id="connectionText">Connected</span>
+    </div>
+    
+    <!-- Error notification area -->
+    <div id="errorNotifications" class="error-notifications" role="alert" aria-live="assertive" aria-hidden="true">
+        <!-- Error messages will be inserted here -->
+    </div>
+    
+    <div id="app" class="app" role="main">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="sidebar" role="navigation" aria-label="Chat sessions navigation">
+            <div class="sidebar-header">
+                <h1 class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    StudyForge AI
+                </h1>
+                <button id="newChatBtn" class="new-chat-btn" type="button" aria-label="Start new chat conversation">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span>New Chat</span>
+                </button>
+            </div>
+            
+            <div class="session-list" id="sessionList" role="list" aria-label="Chat sessions">
+                <!-- Loading skeleton -->
+                <div id="sessionsLoading" class="sessions-loading" aria-hidden="true">
+                    <div class="session-skeleton"></div>
+                    <div class="session-skeleton"></div>
+                    <div class="session-skeleton"></div>
+                </div>
+                <!-- Sessions will be loaded here -->
+                <div id="sessionsEmpty" class="sessions-empty" style="display: none;" role="status">
+                    <p>No chat sessions yet. Start a new conversation!</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button id="settingsBtn" class="settings-btn" type="button" aria-label="Open application settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>Settings</span>
+                </button>
+                
+                <div class="network-info" role="complementary" aria-label="Network access information">
+                    <div class="ip-info">
+                        <strong>LAN Access:</strong><br>
+                        <span id="lanAddress" aria-label="Local network address">{{ local_ip }}:{{ port }}</span>
+                    </div>
+                    <div class="qr-section">
+                        <button id="qrToggle" class="qr-toggle" type="button" aria-expanded="false" aria-controls="qrCode">Show QR Code</button>
+                        <div id="qrCode" class="qr-code" style="display: none;" role="region" aria-label="QR code for mobile access">
+                            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code containing the URL {{ local_ip }}:{{ port }} for mobile device access">
+                            <p>Scan with your mobile device to access StudyForge AI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Chat Area -->
+        <main id="main-content" class="main-content" tabindex="-1">
+            <header class="chat-header">
+                <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-label="Toggle sidebar navigation" aria-expanded="false" aria-controls="sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="sr-only">Menu</span>
+                </button>
+                <h1 id="chatTitle" class="chat-title">New Chat</h1>
+                <div class="chat-controls" role="toolbar" aria-label="Chat options">
+                    <label class="web-search-toggle" for="webSearchToggle">
+                        <input type="checkbox" id="webSearchToggle" aria-describedby="webSearchHelp">
+                        <span>Web Search</span>
+                        <span id="webSearchHelp" class="sr-only">Enable web search for enhanced AI responses</span>
+                    </label>
+                    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle between light and dark theme">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span class="sr-only">Theme Toggle</span>
+                    </button>
+                </div>
+            </header>
+
+            <section class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat conversation">
+                <div class="welcome-message" role="article">
+                    <div class="ai-avatar" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="message-content">
+                        <h2>Welcome to StudyForge AI!</h2>
+                        <p>Your intelligent study companion with web search capabilities. I can help you with:</p>
+                        <ul>
+                            <li><span aria-hidden="true">🔍</span> Research and fact-checking with real-time web search</li>
+                            <li><span aria-hidden="true">📚</span> Study assistance and explanations</li>
+                            <li><span aria-hidden="true">💡</span> Problem solving and analysis</li>
+                            <li><span aria-hidden="true">🧠</span> Memory-enhanced conversations</li>
+                        </ul>
+                        <p>Ask me anything to get started!</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="chat-input-area">
+                <div id="typingIndicator" class="typing-indicator" style="display: none;" role="status" aria-live="polite">
+                    <div class="typing-dots" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>AI is thinking...</span>
+                </div>
+                
+                <form id="chatForm" class="chat-form" role="form">
+                    <!-- Quick Action Buttons -->
+                    <div class="quick-actions">
+                        <button type="button" class="quick-action-btn" data-action="/search" title="Trigger web search">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Search Web
+                        </button>
+                        <button type="button" class="quick-action-btn" data-action="/analyze" title="Analyze uploaded documents">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 12c.552 0 1-.448 1-1V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6c0 .552.448 1 1 1h18z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Analyze Docs
+                        </button>
+                        <button type="button" class="quick-action-btn" data-action="/summarize" title="Summarize content">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/>
+                                <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"/>
+                                <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Summarize
+                        </button>
+                        <button type="button" class="quick-action-btn" data-action="/help" title="Get help">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Help
+                        </button>
+                    </div>
+                    
+                    <div class="input-container">
+                        <label for="messageInput" class="sr-only">Type your message to StudyForge AI</label>
+                        <textarea 
+                            id="messageInput" 
+                            name="message"
+                            placeholder="Message StudyForge AI..." 
+                            rows="1"
+                            maxlength="4000"
+                            required
+                            aria-describedby="charCounter messageHelp"
+                            aria-expanded="false"
+                            aria-haspopup="false"
+                        ></textarea>
+                        <div id="messageHelp" class="sr-only">Enter your message and press Enter or click send. Maximum 4000 characters.</div>
+                        
+                        <!-- Document Upload Button -->
+                        <input type="file" id="documentUpload" multiple accept=".pdf,.docx,.txt,.md,.html,.json,.csv,.xml" style="display: none;" aria-describedby="uploadHelp">
+                        <div id="uploadHelp" class="sr-only">Upload documents for AI analysis. Supported formats: PDF, DOCX, TXT, MD, HTML, JSON, CSV, XML. Max size: 50MB per file.</div>
+                        <button type="button" id="uploadButton" class="upload-button" aria-label="Upload document" title="Upload document">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span class="sr-only">Upload</span>
+                        </button>
+                        
+                        <button type="submit" id="sendButton" class="send-button" aria-label="Send message" disabled>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="sr-only">Send</span>
+                        </button>
+                    </div>
+                    <div class="input-footer">
+                        <span id="charCounter" class="char-counter" aria-live="polite">0 / 4000</span>
+                        <span class="powered-by">Powered by StudyForge AI</span>
+                    </div>
+                    <!-- Error message container -->
+                    <div id="inputError" class="input-error" role="alert" aria-live="assertive" style="display: none;"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal" role="dialog" aria-labelledby="settingsTitle" aria-modal="true" style="display: none;">
+        <div class="modal-backdrop" aria-hidden="true"></div>
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h2 id="settingsTitle">Application Settings</h2>
+                <button id="closeSettings" class="close-btn" type="button" aria-label="Close settings dialog">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="sr-only">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="settingsForm" novalidate>
+                    <fieldset class="setting-group">
+                        <legend>Appearance</legend>
+                        <label for="themeSelect">Color Theme:</label>
+                        <select id="themeSelect" aria-describedby="themeHelp">
+                            <option value="dark">Dark Theme</option>
+                            <option value="light">Light Theme</option>
+                        </select>
+                        <div id="themeHelp" class="setting-help">Choose between dark and light interface themes</div>
+                    </fieldset>
+                    
+                    <fieldset class="setting-group">
+                        <legend>Web Search Settings</legend>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="autoSearchToggle" aria-describedby="autoSearchHelp">
+                            <label for="autoSearchToggle">Enable Auto Web Search</label>
+                            <div id="autoSearchHelp" class="setting-help">Automatically search the web when relevant to your questions</div>
+                        </div>
+                        
+                        <label for="searchThreshold">Search Confidence Threshold: <span id="thresholdValue" aria-live="polite">0.7</span></label>
+                        <input type="range" id="searchThreshold" min="0.1" max="1.0" step="0.1" value="0.7" 
+                               aria-describedby="thresholdHelp" aria-valuemin="0.1" aria-valuemax="1.0" aria-valuenow="0.7">
+                        <div id="thresholdHelp" class="setting-help">Lower values trigger web search more often (0.1 = very often, 1.0 = rarely)</div>
+                        
+                        <label for="maxResults">Maximum Search Results:</label>
+                        <input type="number" id="maxResults" min="1" max="20" value="10" 
+                               aria-describedby="maxResultsHelp" required>
+                        <div id="maxResultsHelp" class="setting-help">Number of search results to process (1-20)</div>
+                    </fieldset>
+                    
+                    <fieldset class="setting-group">
+                        <legend>Performance Settings</legend>
+                        <label for="timeoutSeconds">Response Timeout (seconds):</label>
+                        <input type="number" id="timeoutSeconds" min="10" max="120" value="30" 
+                               aria-describedby="timeoutHelp" required>
+                        <div id="timeoutHelp" class="setting-help">Maximum time to wait for AI responses (10-120 seconds)</div>
+                        
+                        <label for="retryCount">Retry Attempts:</label>
+                        <input type="number" id="retryCount" min="0" max="10" value="3" 
+                               aria-describedby="retryHelp" required>
+                        <div id="retryHelp" class="setting-help">Number of retry attempts for failed requests (0-10)</div>
+                    </fieldset>
+                    
+                    <!-- Settings validation messages -->
+                    <div id="settingsErrors" class="settings-errors" role="alert" aria-live="assertive" style="display: none;"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="resetSettings" class="reset-btn" aria-describedby="resetHelp">Reset to Defaults</button>
+                <div id="resetHelp" class="sr-only">Reset all settings to their default values</div>
+                <button type="submit" form="settingsForm" id="saveSettings" class="save-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional CSS for accessibility and loading states -->
+    <style>
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+        
+        /* Skip link for keyboard navigation */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Loading spinner */
+        .loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Connection status */
+        .connection-status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .connection-status.connected {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .connection-status.disconnected {
+            background: var(--error-color);
+            color: white;
+        }
+        
+        .connection-status.reconnecting {
+            background: var(--warning-color);
+            color: white;
+        }
+        
+        /* Session loading skeleton */
+        .session-skeleton {
+            height: 60px;
+            background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Settings form improvements */
+        .setting-group fieldset {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .setting-group legend {
+            font-weight: 600;
+            padding: 0 0.5rem;
+        }
+        
+        .setting-help {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-wrapper {
+            margin-bottom: 1rem;
+        }
+        
+        .settings-errors {
+            background: var(--error-color);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        
+        /* Focus indicators */
+        *:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-color: #000;
+                --text-primary: #000;
+                --bg-primary: #fff;
+            }
+        }
+        
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+    
+    <!-- Main application script -->
+    <script src="/static/js/app.js"></script>
+    
+    <!-- Initialize accessibility features -->
+    <script>
+        // Hide loading spinner after page load
+        window.addEventListener('load', function() {
+            const spinner = document.getElementById('loadingSpinner');
+            if (spinner) {
+                spinner.style.display = 'none';
+            }
+        });
+        
+        // Keyboard navigation improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trap focus in modal when open
+            const modal = document.getElementById('settingsModal');
+            const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+            
+            function trapFocus(e) {
+                if (modal.style.display !== 'none') {
+                    const focusable = modal.querySelectorAll(focusableElements);
+                    const firstFocusable = focusable[0];
+                    const lastFocusable = focusable[focusable.length - 1];
+                    
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstFocusable) {
+                                e.preventDefault();
+                                lastFocusable.focus();
+                            }
+                        } else {
+                            if (document.activeElement === lastFocusable) {
+                                e.preventDefault();
+                                firstFocusable.focus();
+                            }
+                        }
+                    }
+                    
+                    if (e.key === 'Escape') {
+                        document.getElementById('closeSettings').click();
+                    }
+                }
+            }
+            
+            document.addEventListener('keydown', trapFocus);
+        });
+    </script>
+</body>
+</html>

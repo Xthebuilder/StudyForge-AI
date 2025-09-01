@@ -41,7 +41,7 @@ class SessionTimeouts:
 class AIModelTimeouts:
     """AI model-specific timeout configuration"""
     model_load_timeout: int = 180     # 3 minutes to load model
-    inference_timeout: int = 600      # 10 minutes for AI inference
+    inference_timeout: int = 300      # 5 minutes for AI inference
     context_processing_timeout: int = 120 # 2 minutes for context processing
     streaming_chunk_timeout: int = 30 # Timeout between streaming chunks
     model_switch_timeout: int = 60    # Time to switch between models
@@ -86,16 +86,16 @@ class EnterpriseTimeoutConfig:
     def __post_init__(self):
         """Apply environment-specific adjustments"""
         if self.environment == "development":
-            # More lenient timeouts for development
-            self.network.total_request_timeout = 1200  # 20 minutes
-            self.ai_model.inference_timeout = 1200     # 20 minutes
+            # 5-minute timeout for development as requested
+            self.network.total_request_timeout = 600   # 10 minutes
+            self.ai_model.inference_timeout = 300      # 5 minutes max response time
             self.session.idle_timeout = 3600           # 1 hour
             self.debug_timeouts = True
             
         elif self.environment == "staging":
-            # Moderate timeouts for staging
-            self.network.total_request_timeout = 900   # 15 minutes
-            self.ai_model.inference_timeout = 900      # 15 minutes
+            # 5-minute timeout for staging as well
+            self.network.total_request_timeout = 600   # 10 minutes
+            self.ai_model.inference_timeout = 300      # 5 minutes max response time
             self.session.idle_timeout = 2700           # 45 minutes
             
     def to_dict(self) -> Dict[str, Any]:

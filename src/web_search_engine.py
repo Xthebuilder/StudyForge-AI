@@ -16,6 +16,10 @@ import hashlib
 import logging
 from pathlib import Path
 
+# Import database manager
+from .database_manager import DatabaseManager
+from .memory_compressor import MemoryCompressor
+
 # Color support
 try:
     from colorama import init, Fore, Style
@@ -166,7 +170,7 @@ class SearchCache:
 class WebSearchEngine:
     """Enterprise web search engine with multi-provider support"""
     
-    def __init__(self, config: Dict[str, Any] = None):
+    def __init__(self, config: Dict[str, Any] = None, db_manager: DatabaseManager = None):
         self.config = config or self._default_config()
         self.cache = SearchCache(
             cache_dir=self.config.get('cache_dir', 'search_cache'),
@@ -174,6 +178,10 @@ class WebSearchEngine:
         )
         self.session: Optional[aiohttp.ClientSession] = None
         self.logger = logging.getLogger(f"{__name__}.WebSearchEngine")
+        
+        # Database integration
+        self.db_manager = db_manager or DatabaseManager()
+        self.memory_compressor = MemoryCompressor()
         
         # Search provider configurations
         self.providers = {
@@ -322,11 +330,25 @@ class WebSearchEngine:
             else:
                 print(f"{Fore.GREEN}🌐 Web search triggered - {reason}{Style.RESET_ALL}")
         
-        # Check cache first
+        # Check database cache first
         if self.config['enable_caching']:
+            # Try database cache first (more persistent)
+            cached_results = self.db_manager.get_cached_search(query, 'web_search')
+            if cached_results:
+                print(f"{Fore.MAGENTA}🗄️ Using database cached results ({len(cached_results)} items){Style.RESET_ALL}")
+                return SearchResponse(
+                    query=query,
+                    results=[SearchResult(**result) for result in cached_results],
+                    total_found=len(cached_results),
+                    search_time=0.0,
+                    providers_used=['cache'],
+                    cached=True
+                )
+            
+            # Fall back to file cache
             cached_response = self.cache.get(query, search_type)
             if cached_response:
-                print(f"{Fore.MAGENTA}📦 Using cached results ({len(cached_response.results)} items){Style.RESET_ALL}")
+                print(f"{Fore.MAGENTA}📦 Using file cached results ({len(cached_response.results)} items){Style.RESET_ALL}")
                 return cached_response
         
         # Ensure session is created
@@ -391,9 +413,16 @@ class WebSearchEngine:
             cached=False
         )
         
-        # Cache results
+        # Cache results in both systems
         if self.config['enable_caching'] and final_results:
+            # Cache in file system
             self.cache.set(response)
+            
+            # Cache in database with compression
+            search_context = self.memory_compressor.compress_search_context(
+                [asdict(result) for result in final_results]
+            )
+            self.db_manager.cache_search_result(query, 'web_search', [asdict(result) for result in final_results])
         
         print(f"{Fore.GREEN}✅ Search completed: {len(final_results)} results in {search_time:.2f}s{Style.RESET_ALL}")
         
